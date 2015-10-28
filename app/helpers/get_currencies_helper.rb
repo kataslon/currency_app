@@ -1,0 +1,2 @@
+module GetCurrenciesHelper
+end
