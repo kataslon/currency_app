@@ -7,14 +7,19 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:currency) %></th>
+      <th> Qty of Countries </th>
+      <th> Visited Countries </th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @currencies.each do |currency| %>
       <tr>
-        <td><%= currency.id %></td>
-        <td><%= currency.currency %></td>
+        <td align='center'><%= currency.id %></td>
+        <td align='center'><%= link_to currency.currency, countries_path(currency_id: currency.id) %></td>
+        <td align='center'><%= currency.currency_codes.count %></td>
+        <td align='center'><%= get_visited_countries(currency.id).count %></td>
+        <%= hidden_field :currency_id, :value => currency.id %>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_currency_path(currency), :class => 'btn btn-default btn-xs' %>
