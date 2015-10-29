@@ -1,6 +1,6 @@
 <%- model_class = Country -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> whith <%= Currency.find(params[:currency_id]).currency %></h1>
 </div>
 <table class="table table-striped">
   <thead>
@@ -14,7 +14,7 @@
   <tbody>
     <% @countries.each do |country| %>
       <tr>
-        <td><%= link_to country.id, country_path(country) %></td>
+        <td><%= country.id %></td>
         <td><%= country.country %></td>
         <td><%= country.visited %></td>
         <td>
