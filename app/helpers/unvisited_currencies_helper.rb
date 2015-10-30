@@ -1,0 +1,2 @@
+module UnvisitedCurrenciesHelper
+end

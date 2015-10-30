@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'unvisited_currencies/index'
+
   get 'get_currencies/get_currencies'
 
   resources :currencies
