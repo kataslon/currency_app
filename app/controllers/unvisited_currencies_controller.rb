@@ -14,7 +14,6 @@ class UnvisitedCurrenciesController < ApplicationController
     CurrencyCode.all.where(country_id: arr).each do |currency_code|
       id_arr << currency_code.currency_id
     end
-    byebug
     return id_arr
   end
 end

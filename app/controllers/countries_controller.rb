@@ -1,4 +1,5 @@
 class CountriesController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update]
   before_action :set_country, only: [:edit, :update]
 
   def show
@@ -14,7 +15,9 @@ class CountriesController < ApplicationController
 
   def update
     @country.update(country_params)
-    @countries = get_countries(@country.currency_codes.first.currency_id)
+    currency_id = @country.currency_codes.first.currency_id
+    @countries = get_countries(currency_id)
+    redirect_to countries_path(currency_id: currency_id)
   end
 
   protected
