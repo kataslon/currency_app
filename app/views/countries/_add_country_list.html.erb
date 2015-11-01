@@ -14,6 +14,9 @@
         <td><%= country.id %></td>
         <td><%= country.country %></td>
         <td><%= country.visited %></td>
+        <td>
+          <%= link_to 'add to trip', edit_trip_plan_path(@trip_plan, country_id: country.id), :class => 'btn btn-default btn-xs' %>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -1,0 +1,10 @@
+class CreateTripPlans < ActiveRecord::Migration
+  def change
+    create_table :trip_plans do |t|
+      t.integer :trip_id
+      t.integer :country_id
+
+      t.timestamps null: false
+    end
+  end
+end

@@ -1,0 +1,7 @@
+<%- model_class = Trip -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<%= render :partial => 'form' %>
+<%= render 'countries/countries_list' %>
+<%= link_to 'Add country', new_trip_plan_path(trip_id: @trip.id), :class => 'btn btn-default'  %>

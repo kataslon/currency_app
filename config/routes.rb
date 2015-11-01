@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
   get 'persons/profile', as: 'user_root'
-
   get 'unvisited_currencies/index'
-
   get 'get_currencies/get_currencies'
 
   resources :currencies
   resources :countries
+  resources :trips
+  resources :trip_plans
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
