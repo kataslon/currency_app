@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
-  
+  before_action :authenticate_user!, only: [:new, :edit, :update]
+
   def index
     @trips = Trip.all
   end
@@ -22,21 +23,19 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.create(trip_params)
-    respond_to do |format|
-      if @trip.save
-        format.html { redirect_to @trip, notice: 'Currency was successfully created.' }
-        format.json { render :show, status: :created, location: @trip }
-      else
-        format.html { render :new }
-        format.json { render json: @trip.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to trips_path
   end
 
   def update
+    @trip = Trip.find(params[:id])
+    @trip.update(trip_params)
+    redirect_to edit_trip_path(@trip)
   end
 
   def destroy
+    @trip = Trip.find(params[:id])
+    @trip.destroy
+    redirect_to trips_path
   end
 
   private

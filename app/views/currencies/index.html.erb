@@ -1,29 +1,27 @@
-<%- model_class = Currency -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1>Currencies</h1>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:currency) %></th>
+      <th> id </th>
+      <th> Currency </th>
       <th> Qty of Countries </th>
       <th> Visited Countries </th>
+      <th> Collected </th>
     </tr>
   </thead>
   <tbody>
     <% @currencies.each do |currency| %>
       <tr>
         <td align='center'><%= currency.id %></td>
-        <td><%= link_to currency.currency, countries_path(currency_id: currency.id) %></td>
+        <td class='collected'><%= link_to currency.currency, countries_path(currency_id: currency.id) %></td>
         <td align='center'><%= currency.currency_codes.count %></td>
         <td align='center'><%= get_visited_countries(currency.id).count %></td>
-        <%= hidden_field :currency_id, :value => currency.id %>
+        <td align='center'><%= 'Collected' if currency.currency_codes.count == get_visited_countries(currency.id).count %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_currency_path,
-            :class => 'btn btn-primary' %>
+<%= link_to 'New', new_currency_path, :class => 'btn btn-primary' %>

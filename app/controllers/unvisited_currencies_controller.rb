@@ -1,4 +1,5 @@
 class UnvisitedCurrenciesController < ApplicationController
+  
   def index
   	@currencies = Currency.where(id: unvisited_id)
   end
@@ -16,4 +17,5 @@ class UnvisitedCurrenciesController < ApplicationController
     end
     return id_arr
   end
+  
 end

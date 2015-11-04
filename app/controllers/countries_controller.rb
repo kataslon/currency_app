@@ -2,9 +2,6 @@ class CountriesController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
   before_action :set_country, only: [:edit, :update]
 
-  def show
-  end
-
   def index
   	get_countries(params[:currency_id])
   end
