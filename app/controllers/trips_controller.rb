@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
 
   def index
     @trips = Trip.all
